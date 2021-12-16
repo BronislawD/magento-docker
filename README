@@ -1,0 +1,35 @@
+README
+
+- należy zrobić chown na folderze z projektem -R recursive
+
+- do kontenera wchodzimy poprzez komendę:
+		 docker exec -it magento2_phpfpm_1 bash
+	WSZYSTKIE KOMENDY WYWOŁYWAĆ Z WNĘTRZA KONTENERA !
+
+- docker-compose up -d --build
+- install uruchomić z:
+		 php -d  memory_limit=-1 bin/magento setup:install
+
+
+1. przed instalacją magento2, usunąć z composer.lock bibliotekę mageplaza/module-smtp, zrobić composer install.
+
+2.Podczas instalacji jeśli będzie płakało o   elasticsearch, to go wyłączamy :
+ php bin/magento module:disable {Magento_Elasticsearch,Magento_InventoryElasticsearch,Magento_Elasticsearch6,Magento_Elasticsearch7}
+
+3. po instalacji stworzyc admina komendą:
+bin/magento admin:user:create --admin-user='admin' --admin-password='test123' --admin-email='admin@admin.com' --admin-firstname='Admin' --admin-lastname='Admin'
+
+4. wrzucamy testowe dane do bazy:
+ - php -d  memory_limit=-1 bin/magento sampledata:deploy
+
+tutaj muusimy aktywować  elasticsearch:
+	php bin/magento module:enable {Magento_Elasticsearch,Magento_InventoryElasticsearch,Magento_Elasticsearch6,Magento_Elasticsearch7}
+
+ - php -d memory_limit=-1 bin/magento setup:upgrade
+ - php -d  memory_limit=-1 bin/magento cache:flush
+
+5.Aby włączyć elasticsearch'a:
+ - wchodzimy w panel admina /admin i przeklikujemy  Stores -> Configuration -> Catalog -> Catalog -> Catalog Search.
+ -  'Elasticsearch Server Hostname' zmieniamy localhost na -> elasticsearch. klikamy przycisk test-	connection, jak jest succesfull, to jest git !!!i Save Config!!!.
+ - bin/magento indexer:reindex catalogsearch_fulltext
+ - bin/magento cache:flush
