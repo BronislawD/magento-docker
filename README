@@ -1,12 +1,16 @@
 README
-
+- budujemy obraz phpa:
+	sudo docker build -t bropro/php-fpm:7.3-magento2 dockerfile/phpfpm/
+- mkdir mysql
+- mkdir src
+- w src klonujemy repo "git clone https://github.com/pawelszczepaniak/ebutikmagento ."
+- docker-compose up -d --build
 - należy zrobić chown na folderze z projektem -R recursive
-
+s
 - do kontenera wchodzimy poprzez komendę:
 		 docker exec -it magento2_phpfpm_1 bash
 	WSZYSTKIE KOMENDY WYWOŁYWAĆ Z WNĘTRZA KONTENERA !
 
-- docker-compose up -d --build
 - install uruchomić z:
 		 php -d  memory_limit=-1 bin/magento setup:install
 
