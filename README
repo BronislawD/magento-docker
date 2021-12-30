@@ -26,6 +26,12 @@ s
 3. po instalacji stworzyc admina komendą:
 bin/magento admin:user:create --admin-user='admin' --admin-password='test123' --admin-email='admin@admin.com' --admin-firstname='Admin' --admin-lastname='Admin'
 
+	SKLEP jest już dostępny pod adresem http://127.0.0.1/  ADMIN: http://127.0.0.1/admin
+	jeśli coś nie działa, wyczyścic cache :
+		php bin/magento cache:clean
+		rm -rf var/cache/*
+		rm -rf var/generation/*
+		
 4. wrzucamy testowe dane do bazy:
  - php -d  memory_limit=-1 bin/magento sampledata:deploy
 
