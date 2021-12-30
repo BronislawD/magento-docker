@@ -9,6 +9,7 @@ README
 s
 - do kontenera wchodzimy poprzez komendę:
 		 docker exec -it magento2_phpfpm_1 bash
+		 (a najlepiej sprawdzić nazwę kontenera poprzez "docker ps" -> ostatnia kolumna)
 	WSZYSTKIE KOMENDY WYWOŁYWAĆ Z WNĘTRZA KONTENERA !
 
 - install uruchomić z:
