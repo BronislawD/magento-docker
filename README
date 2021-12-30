@@ -11,7 +11,9 @@ s
 		 docker exec -it magento2_phpfpm_1 bash
 		 (a najlepiej sprawdzić nazwę kontenera poprzez "docker ps" -> ostatnia kolumna)
 	WSZYSTKIE KOMENDY WYWOŁYWAĆ Z WNĘTRZA KONTENERA !
-
+	
+- ustawiamy config:
+		bin/magento setup:config:set --backend-frontname=admin --db-host=mysql --db-name=mydatabase --db-user=myuser --db-password=test123
 - install uruchomić z:
 		 php -d  memory_limit=-1 bin/magento setup:install
 
