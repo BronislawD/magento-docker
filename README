@@ -1,4 +1,6 @@
 README
+MAGENTO === 2.3
+
 - budujemy obraz phpa:
 	sudo docker build -t bropro/php-fpm:7.3-magento2 dockerfile/phpfpm/
 - mkdir mysql
